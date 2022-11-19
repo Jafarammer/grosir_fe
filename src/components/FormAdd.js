@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import axiosInstance from "../helper/axios";
+// import axiosInstance from "../helper/axios";
 import Swal from "sweetalert2";
 
 function FormAdd() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const [name, setName] = useState("");
+  const [product_name, setName] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
   const [sellingPrice, setSellingPrice] = useState("");
   const [stock, setStock] = useState("");
@@ -16,7 +16,7 @@ function FormAdd() {
   const saveProduct = async () => {
     setIsLoading(true);
     const formData = new FormData();
-    formData.append("product_name", name);
+    formData.append("product_name", product_name);
     formData.append("product_purchase_price", purchasePrice);
     formData.append("product_selling_price", sellingPrice);
     formData.append("product_stock", stock);
@@ -24,7 +24,7 @@ function FormAdd() {
 
     await axios
       .post(
-        `https://grosir-production.up.railway.app/product/add`,
+        `http://localhost:8000/product/add`,
         formData,
         {
           headers: {
@@ -34,6 +34,7 @@ function FormAdd() {
         []
       )
       .then((res) => {
+        // console.log(res.data);
         if (res?.data.messageType) {
           Swal.fire({
             icon: "error",
@@ -65,7 +66,7 @@ function FormAdd() {
       <input
         type="text"
         className="form-control py-3 mb-4"
-        placeholder="Name"
+        placeholder="Names"
         onChange={(e) => setName(e.target.value)}
       />
       <div className="row mb-4">

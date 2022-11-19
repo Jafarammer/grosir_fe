@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axiosInstance from "../../helper/axios";
+// import axiosInstance from "../../helper/axios";
 import axios from "axios";
 import Swal from "sweetalert2";
 // css
@@ -17,8 +17,8 @@ function Register() {
 
   const handleRegister = () => {
     setIsLoading(true);
-    axiosInstance
-      .post(`https://grosir-production.up.railway.app/auth/register`, {
+    axios
+      .post(`http://localhost:8000/auth/register`, {
         first_name,
         last_name,
         email,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axiosInstance from "../helper/axios";
+// import axiosInstance from "../helper/axios";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import DataTable from "react-data-table-component";
@@ -12,9 +12,7 @@ function TableProduct() {
   const [search, setSearch] = useState("");
 
   const getProduct = async () => {
-    const res = await axios.get(
-      `https://grosir-production.up.railway.app/product`
-    );
+    const res = await axios.get(`http://localhost:8000/product`);
     setProduct(res.data);
     setFilterProduct(res.data);
   };
@@ -51,7 +49,13 @@ function TableProduct() {
     {
       name: <p className="fw-bold fs-5">Image</p>,
       selector: (row) => (
-        <img className="my-3" width={100} height={100} src={row.product_img} />
+        <img
+          className="my-3"
+          width={100}
+          height={100}
+          src={row.product_img}
+          alt="images"
+        />
       ),
     },
     {
@@ -79,7 +83,7 @@ function TableProduct() {
                 if (result.isConfirmed) {
                   axios
                     .delete(
-                      `https://grosir-production.up.railway.app/product/delete/${row.product_id}`
+                      `http://localhost:8000/product/delete/${row.product_id}`
                     )
                     .then(() => {
                       setTimeout(() => {
@@ -89,7 +93,7 @@ function TableProduct() {
                           "success"
                         );
                         navigate(0);
-                      }, 1000);
+                      }, 1300);
                     });
                 }
               })

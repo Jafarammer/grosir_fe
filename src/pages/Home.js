@@ -9,7 +9,11 @@ function Home() {
         <div
           className={`card mx-3 mb-3 bg-dark border-0 px-1 pb-1 ${styles.card_home}`}
         >
-          <img src="/images/default.png" className="card-img-top" />
+          <img
+            src="/images/default.png"
+            className="card-img-top"
+            alt="images"
+          />
           <p className="position-absolute fixed-bottom ms-4 text-light">
             Data Static
           </p>

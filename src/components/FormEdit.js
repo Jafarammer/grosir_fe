@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axiosInstance from "../helper/axios";
+// import axiosInstance from "../helper/axios";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useParams, useNavigate } from "react-router-dom";
@@ -16,9 +16,7 @@ export default function FormEdit() {
 
   useEffect(() => {
     axios
-      .get(
-        `https://grosir-production.up.railway.app/find/product/id/${params.id}`
-      )
+      .get(`http://localhost:8000/find/product/id/${params.id}`)
       .then((res) => setData(res.data[0]));
   });
 
@@ -32,7 +30,7 @@ export default function FormEdit() {
 
     await axios
       .patch(
-        `https://grosir-production.up.railway.app/product/edit/${params.id}`,
+        `http://localhost:8000/product/edit/${params.id}`,
         formData,
         {
           headers: {
