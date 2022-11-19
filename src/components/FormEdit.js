@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axiosInstance from "../helper/axios";
 import Swal from "sweetalert2";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -14,7 +14,7 @@ export default function FormEdit() {
   const [file, setFile] = useState("");
 
   useEffect(() => {
-    axios
+    axiosInstance
       .get(`${process.env.REACT_APP_API_URL}/find/product/id/${params.id}`)
       .then((res) => setData(res.data[0]));
   });
@@ -27,9 +27,9 @@ export default function FormEdit() {
     formData.append("product_stock", stock);
     formData.append("product_img", file);
 
-    await axios
+    await axiosInstance
       .patch(
-        `${process.env.REACT_APP_API_URL}product/edit/${params.id}`,
+        `${process.env.REACT_APP_API_URL}/product/edit/${params.id}`,
         formData,
         {
           headers: {

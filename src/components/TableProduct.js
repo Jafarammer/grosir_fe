@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axiosInstance from "../helper/axios";
 import { useNavigate, Link } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import Swal from "sweetalert2";
@@ -11,7 +11,9 @@ function TableProduct() {
   const [search, setSearch] = useState("");
 
   const getProduct = async () => {
-    const res = await axios.get(`${process.env.REACT_APP_API_URL}product`);
+    const res = await axiosInstance.get(
+      `${process.env.REACT_APP_API_URL}/product`
+    );
     setProduct(res.data);
     setFilterProduct(res.data);
   };
@@ -74,9 +76,9 @@ function TableProduct() {
                 confirmButtonText: "Yes, delete it!",
               }).then((result) => {
                 if (result.isConfirmed) {
-                  axios
+                  axiosInstance
                     .delete(
-                      `${process.env.REACT_APP_API_URL}product/delete/${row.product_id}`
+                      `${process.env.REACT_APP_API_URL}/product/delete/${row.product_id}`
                     )
                     .then(() => {
                       setTimeout(() => {
