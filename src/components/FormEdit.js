@@ -29,7 +29,7 @@ export default function FormEdit() {
 
     await axios
       .patch(
-        `${process.env.REACT_APP_API_URL}/product/edit/${params.id}`,
+        `${process.env.REACT_APP_API_URL}product/edit/${params.id}`,
         formData,
         {
           headers: {

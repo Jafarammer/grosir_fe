@@ -11,7 +11,7 @@ function TableProduct() {
   const [search, setSearch] = useState("");
 
   const getProduct = async () => {
-    const res = await axios.get(`${process.env.REACT_APP_API_URL}/product`);
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}product`);
     setProduct(res.data);
     setFilterProduct(res.data);
   };
@@ -76,7 +76,7 @@ function TableProduct() {
                 if (result.isConfirmed) {
                   axios
                     .delete(
-                      `${process.env.REACT_APP_API_URL}/product/delete/${row.product_id}`
+                      `${process.env.REACT_APP_API_URL}product/delete/${row.product_id}`
                     )
                     .then(() => {
                       setTimeout(() => {

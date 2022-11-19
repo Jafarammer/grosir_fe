@@ -17,7 +17,7 @@ function Register() {
   const handleRegister = () => {
     setIsLoading(true);
     axios
-      .post(`${process.env.REACT_APP_API_URL}/auth/register`, {
+      .post(`${process.env.REACT_APP_API_URL}auth/register`, {
         first_name,
         last_name,
         email,

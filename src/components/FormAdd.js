@@ -23,7 +23,7 @@ function FormAdd() {
 
     await axios
       .post(
-        `${process.env.REACT_APP_API_URL}/product/add`,
+        `${process.env.REACT_APP_API_URL}product/add`,
         formData,
         {
           headers: {
