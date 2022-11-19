@@ -12,7 +12,9 @@ function TableProduct() {
   const [search, setSearch] = useState("");
 
   const getProduct = async () => {
-    const res = await axios.get(`http://localhost:8000/product`);
+    const res = await axios.get(
+      `https://grosir-production.up.railway.app/product`
+    );
     setProduct(res.data);
     setFilterProduct(res.data);
   };
@@ -83,7 +85,7 @@ function TableProduct() {
                 if (result.isConfirmed) {
                   axios
                     .delete(
-                      `http://localhost:8000/product/delete/${row.product_id}`
+                      `https://grosir-production.up.railway.app/product/delete/${row.product_id}`
                     )
                     .then(() => {
                       setTimeout(() => {

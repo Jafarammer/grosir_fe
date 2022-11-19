@@ -15,7 +15,7 @@ function Login() {
   const handleLogin = () => {
     setIsLoading(true);
     axios
-      .post(`http://localhost:8000/auth/login`, {
+      .post(`https://grosir-production.up.railway.app/auth/login`, {
         email,
         password,
       })

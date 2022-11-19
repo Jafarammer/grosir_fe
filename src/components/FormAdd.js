@@ -24,7 +24,7 @@ function FormAdd() {
 
     await axios
       .post(
-        `http://localhost:8000/product/add`,
+        `https://grosir-production.up.railway.app/product/add`,
         formData,
         {
           headers: {

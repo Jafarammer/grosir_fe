@@ -18,7 +18,7 @@ function Register() {
   const handleRegister = () => {
     setIsLoading(true);
     axios
-      .post(`http://localhost:8000/auth/register`, {
+      .post(`https://grosir-production.up.railway.app/auth/register`, {
         first_name,
         last_name,
         email,

@@ -16,7 +16,9 @@ export default function FormEdit() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/find/product/id/${params.id}`)
+      .get(
+        `https://grosir-production.up.railway.app/find/product/id/${params.id}`
+      )
       .then((res) => setData(res.data[0]));
   });
 
@@ -30,7 +32,7 @@ export default function FormEdit() {
 
     await axios
       .patch(
-        `http://localhost:8000/product/edit/${params.id}`,
+        `https://grosir-production.up.railway.app/product/edit/${params.id}`,
         formData,
         {
           headers: {
