@@ -14,17 +14,23 @@ import Register from "./pages/auth/Register";
 import Logout from "./pages/auth/Logout";
 
 function App() {
-  axios.interceptors.request.use((config) => {
-    if (localStorage.getItem("token")) {
-      config.headers = {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      };
+  axios.interceptors.request.use(
+    function (config) {
+      if (localStorage.getItem("token")) {
+        config.headers = {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        };
+      }
+      return config;
+    },
+    function (error) {
+      // Do something with request error
+      return Promise.reject(error);
     }
-    return config;
-  });
+  );
 
   return (
-    <DataContext.Provider value={JSON.parse(localStorage.getItem("user"))}>
+    <DataContext>
       <BrowserRouter>
         <Routes>
           {/* Show nav */}
@@ -42,7 +48,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </DataContext.Provider>
+    </DataContext>
   );
 }
 
