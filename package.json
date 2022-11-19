@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
-    "env-cmd": "^10.1.0",
     "react": "^18.2.0",
     "react-data-table-component": "^7.5.3",
     "react-dom": "^18.2.0",
@@ -23,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:firebase": "env-cmd -f .env.local npm run build && firebase deploy -P grosir-fe"
+    "build:firebase": "env-cmd -f .env.local npm run build && firebase deploy -P grosir-a88c4"
   },
   "eslintConfig": {
     "extends": [
@@ -42,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
   }
 }
