@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// component
+import FormSearch from "./FormSearch";
 
 function Navbar() {
+  const token = localStorage.getItem("token");
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 px-5">
@@ -20,54 +24,52 @@ function Navbar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <div className="collapse navbar-collapse">
+            <ul className="navbar-nav me-5 mb-2 mb-lg-0">
               <li className="nav-item fw-bold mx-2">
                 <Link to="/" className="nav-link">
                   Home
                 </Link>
               </li>
               <li className="nav-item fw-bold mx-2">
-                <Link to="/product" className="nav-link">
-                  Product
-                </Link>
-              </li>
-              <li className="nav-item dropdown fw-bold mx-2">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Signin / Signup
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Login
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Register
-                    </a>
-                  </li>
-                </ul>
+                {token ? (
+                  <Link to="/product" className="nav-link">
+                    Product
+                  </Link>
+                ) : (
+                  <Link to="/auth/login" className="nav-link">
+                    Product
+                  </Link>
+                )}
               </li>
             </ul>
-            <form className="d-flex me-5">
-              <input
-                className="form-control me-2 w-100"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
+            <FormSearch />
+            <div className="btn-group ms-5">
+              <button
+                type="button"
+                className="btn btn-primary dropdown-toggle fw-bold"
+                data-bs-toggle="dropdown"
+              >
+                Signin / Signup
               </button>
-            </form>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link to="/auth/login" className="dropdown-item">
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/auth/register" className="dropdown-item">
+                    Register
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/auth/logout" className="dropdown-item">
+                    Logout
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>

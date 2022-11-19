@@ -1,0 +1,19 @@
+.d_auth{
+    height: 100vh;
+    overflow: hidden;
+}
+.d_card_auth{
+    height: 90vh;
+}
+.card_auth{
+    width: 50rem;
+    height: auto;
+}
+.d_loading {
+    width: 100vw;
+    height: 100vh;
+  }
+  .d_loading div {
+    width: 15rem;
+    height: 15rem;
+  }
