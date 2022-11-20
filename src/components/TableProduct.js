@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import axiosInstance from "../helper/axios";
+import axiosInstance from "../helper/axios";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import DataTable from "react-data-table-component";
@@ -12,9 +12,7 @@ function TableProduct() {
   const [search, setSearch] = useState("");
 
   const getProduct = async () => {
-    const res = await axios.get(
-      `https://grosir-production.up.railway.app/product`
-    );
+    const res = await axiosInstance.get(`/product`);
     setProduct(res.data);
     setFilterProduct(res.data);
   };
@@ -29,6 +27,10 @@ function TableProduct() {
     });
     setFilterProduct(result);
   }, [search]);
+
+  const addDefaultSrc = (e) => {
+    e.target.src = "/images/default.png";
+  };
 
   const column = [
     {
@@ -55,7 +57,8 @@ function TableProduct() {
           className="my-3"
           width={100}
           height={100}
-          src={row.product_img}
+          src={row.product_img || "images/default.png"}
+          onError={addDefaultSrc}
           alt="images"
         />
       ),
@@ -83,10 +86,8 @@ function TableProduct() {
                 confirmButtonText: "Yes, delete it!",
               }).then((result) => {
                 if (result.isConfirmed) {
-                  axios
-                    .delete(
-                      `https://grosir-production.up.railway.app/product/delete/${row.product_id}`
-                    )
+                  axiosInstance
+                    .delete(`/product/delete/${row.product_id}`)
                     .then(() => {
                       setTimeout(() => {
                         Swal.fire(

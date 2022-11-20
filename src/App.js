@@ -9,6 +9,7 @@ import HideLayout from "./layouts/HideLayout";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import EditProduct from "./pages/EditProduct";
+import Search from "./pages/Search";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Logout from "./pages/auth/Logout";
@@ -33,6 +34,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/product" element={<Product />} />
             <Route path="/editProduct/:id" element={<EditProduct />} />
+            <Route path="/searchPage/:keyword" element={<Search />} />
           </Route>
           {/* Hide nav*/}
           <Route element={<HideLayout />}>

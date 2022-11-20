@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import axiosInstance from "../helper/axios";
+import axiosInstance from "../helper/axios";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useParams, useNavigate } from "react-router-dom";
@@ -15,10 +15,8 @@ export default function FormEdit() {
   const [file, setFile] = useState("");
 
   useEffect(() => {
-    axios
-      .get(
-        `https://grosir-production.up.railway.app/find/product/id/${params.id}`
-      )
+    axiosInstance
+      .get(`/find/product/id/${params.id}`)
       .then((res) => setData(res.data[0]));
   });
 
@@ -30,9 +28,9 @@ export default function FormEdit() {
     formData.append("product_stock", stock);
     formData.append("product_img", file);
 
-    await axios
+    await axiosInstance
       .patch(
-        `https://grosir-production.up.railway.app/product/edit/${params.id}`,
+        `/product/edit/${params.id}`,
         formData,
         {
           headers: {

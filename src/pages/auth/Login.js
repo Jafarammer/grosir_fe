@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import axiosInstance from "../../helper/axios";
+import axiosInstance from "../../helper/axios";
 import axios from "axios";
 import Swal from "sweetalert2";
 // css
@@ -14,8 +14,8 @@ function Login() {
 
   const handleLogin = () => {
     setIsLoading(true);
-    axios
-      .post(`https://grosir-production.up.railway.app/auth/login`, {
+    axiosInstance
+      .post(`/auth/login`, {
         email,
         password,
       })

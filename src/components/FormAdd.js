@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import axiosInstance from "../helper/axios";
+import axiosInstance from "../helper/axios";
 import Swal from "sweetalert2";
 
 function FormAdd() {
@@ -22,9 +22,9 @@ function FormAdd() {
     formData.append("product_stock", stock);
     formData.append("product_img", file);
 
-    await axios
+    await axiosInstance
       .post(
-        `https://grosir-production.up.railway.app/product/add`,
+        `/product/add`,
         formData,
         {
           headers: {
