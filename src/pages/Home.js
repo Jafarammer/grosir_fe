@@ -10,7 +10,7 @@ function Home() {
     axiosInstance.get("/product").then((res) => {
       setProduct(res.data);
     });
-  });
+  }, []);
 
   const addDefaultSrc = (e) => {
     e.target.src = "/images/default.png";
